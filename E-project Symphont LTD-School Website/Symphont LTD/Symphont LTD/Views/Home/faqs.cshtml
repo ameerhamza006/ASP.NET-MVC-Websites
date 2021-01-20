@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Symphont_LTD.Models.FAQ>
+@{
+    ViewBag.Title = "FAQS";
+    Layout = "~/Views/Shared/Website.cshtml";
+}
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>FAQS</h3>
+</div>
+@foreach (var item in Model)
+{
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 col-12">
+                    <button class="faqs">
+                        @Html.DisplayFor(modelItem => item.Questions)
+                    </button>
+
+                    <div class="panel">
+                        <p>@Html.DisplayFor(modelItem => item.Answer)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+}
+<style>
+   .faqs
+{
+    color: blue;
+    cursor: pointer;
+    padding: 15px;
+   width:1024px;
+    text-align: left;
+    border: none;
+    outline: none;
+	transition: 0.4s;
+    font: 30px Lato, sans-serif;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.active, .faqs:hover
+{
+    color: white;
+   background-color: blueviolet;
+}
+.panel 
+{
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+p
+{
+	font: 25px Lato, sans-serif; 
+}
+.faqs:after 
+{
+   font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 3rem;
+    content: "\f106";
+    color: #1f7de2;
+    float: right;
+    margin-top: -12px;
+}
+.active:after 
+{
+   content: "\f107";
+}
+</style>
+
+<script type="text/javascript">
+    var acc = document.getElementsByClassName("faqs");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>>

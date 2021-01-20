@@ -1,0 +1,63 @@
+﻿@model Symphont_LTD.Models.Exam
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>Course Details</h3>
+            </div>
+        </div>
+        <div class="info-table table-responsive">
+            <dl class="table text-nowrap">
+                <dt>
+                    Exam ID :
+                </dt>
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.E_id)
+                </dd>
+                <dt>
+                    Student Name :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Registration.First_Name)
+                </dd>
+                <dt>
+                    Exam Name :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Exam_Name)
+                </dd>
+
+                <dt>
+                    Exam Time :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Exam_Time)
+                </dd>
+
+                <dt>
+                    Exam Date :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Exam_Date)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.E_id }, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@model Symphont_LTD.Models.Registration
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/Website.cshtml";
+}
+
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Registration</h3>
+</div>
+<center>
+
+    @using (Html.BeginForm("Create", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="white-popup-block">
+            <div class="popup_box" style="width:800px; margin:50px">
+                <h3 style="font-size:40px; text-align:center;">Registration</h3>
+                <div class="row">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-lg-6 col-sm-12 col-12 form-group">
+                        @Html.LabelFor(model => model.First_Name, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "First Name" } })
+                        @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.Last_Name, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new {type="email", @class = "form-control", required = "required", placeholder = "E-mail" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { type = "password", @class = "form-control ", required = "required", placeholder = "Password" } })
+
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        <label>Gender *</label>
+                        @Html.DropDownListFor(a => a.Gender, new List<SelectListItem>
+                   {
+                     new SelectListItem { Text = "Please Select Gender *", Selected = true },
+                     new SelectListItem { Text = "Male" },
+                     new SelectListItem { Text = "Female" },
+                     new SelectListItem { Text = "Others" },
+                   }, new { @required = "required", @class = "select2", })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.Date_of_birth, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Date_of_birth, new { htmlAttributes = new { @class = "form-control air-datepicker", required = "required", placeholder = "Date Of Birth" } })
+                        @Html.ValidationMessageFor(model => model.Date_of_birth, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Phone" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Country" } })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-12 form-group">
+                        <label>Gender *</label>
+                        @Html.DropDownListFor(a => a.Role, new List<SelectListItem>
+                   {
+                     new SelectListItem { Text = "Student", Selected = true },
+                     new SelectListItem { Text = "Admin" },
+                   }, new { @required = "required", @class = "select2", })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.C_id, "Course", htmlAttributes: new { @class = "control-label " })
+                        @Html.DropDownList("C_id", null, htmlAttributes: new { @class = "form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.C_id, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-6 col-12 form-group">
+                        @Html.LabelFor(model => model.pichure, htmlAttributes: new { @class = "control-label " })
+                        <input type="file" name="p" class="custom-file-upload"/>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-12">
+                        <button type="submit" value="Create" class="boxed_btn_orange">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+  
+</center>

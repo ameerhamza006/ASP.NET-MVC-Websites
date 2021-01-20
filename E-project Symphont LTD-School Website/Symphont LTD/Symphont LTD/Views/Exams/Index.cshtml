@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Symphont_LTD.Models.Exam>
+
+@{
+    ViewBag.Title = "All Exam Data";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>All Exam Data</h3>
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <div class="table-responsive">
+            <table class="table display data-table text-nowrap">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input checkAll">
+                                <label class="form-check-label">ID</label>
+                            </div>
+                        </th>
+
+                        <th>Student Name</th>
+                        <th>Exam Name</th>
+                        <th>Exam Date</th>
+                        <th>Exam time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.E_id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Registration.First_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Exam_Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Exam_Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Exam_Time)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.E_id }, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+                            @Html.ActionLink("Details", "Details", new { id = item.E_id }, new { @class = "btn-fill-sm radius-4 text-light bg-yellow" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.E_id }, new { @class = "btn-fill-sm radius-4 text-light bg-orange-red" })
+                        </td>
+                    </tr>
+                    }
+
+            </table>
+        </div>
+    </div>
+</div>

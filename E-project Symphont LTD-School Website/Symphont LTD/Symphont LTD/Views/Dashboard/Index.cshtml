@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Symphont_LTD.Models.Registration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>All Course Data</h3>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">...</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-times text-orange-red"></i>Close
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-cogs text-dark-pastel-green"></i>Edit
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-redo-alt text-orange-peel"></i>Refresh
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input checkAll">
+                                    <label class="form-check-label">ID</label>
+                                </div>
+                            </th>
+                            <th>Picthure</th>
+                            <th>First Name</th>
+                            <th>Last anme</th>
+                            <th>E-mail</th>
+                            <th>Password</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Country</th>
+                            <th>Course Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td>
+                                <img src="~/picture/@Html.DisplayFor(modelItem => item.pichure)" width="100" height="20" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.First_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Last_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date_of_birth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course.Course_Name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+                                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn-fill-sm radius-4 text-light bg-yellow" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn-fill-sm radius-4 text-light bg-orange-red" })
+                            </td>
+                        </tr>
+                        }
+
+                </table>
+            </div>
+        </div>
+    </div>

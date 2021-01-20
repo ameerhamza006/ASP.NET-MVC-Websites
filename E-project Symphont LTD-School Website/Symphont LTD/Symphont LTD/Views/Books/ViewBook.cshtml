@@ -1,0 +1,51 @@
+﻿@model Symphont_LTD.Models.Book
+
+@{
+    ViewBag.Title = "ViewBook";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<h2>ViewBook</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_PDF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_PDF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Upload_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Upload_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.Course_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.B_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

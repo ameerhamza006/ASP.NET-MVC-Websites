@@ -1,0 +1,55 @@
+﻿@model Symphont_LTD.Models.Book
+
+@{
+    ViewBag.Title = "Delete Book";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>Are You Sure You Want To Delete This Book?</h3>
+                </div>
+            </div>
+            <div class="single-info-details">
+                <div class="item-content">
+                    <div class="info-table table-responsive">
+                        <table class="table text-nowrap">
+                            <tbody>
+                                <tr>
+                                    <td>Book ID:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.B_id)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Name:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course.Course_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>Book Name:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Book_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>Uploded Date:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Upload_date)</td>
+                                </tr>
+                                <tr>
+                                    <td>Book PDF:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Book_PDF)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn-fill-md radius-4 text-light bg-orange-red" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,60 @@
+﻿@model Symphont_LTD.Models.Fee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>Course Details</h3>
+            </div>
+        </div>
+        <div class="info-table table-responsive">
+            <dl class="table text-nowrap">
+                <dt>
+                    Course ID :
+                </dt>
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.F_id)
+                </dd>
+                <dt>
+                    Student Name :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Registration.First_Name)
+                </dd>
+                <dt>
+                    Amount :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Amount)
+                </dd>
+
+                <dt>
+                    Status :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.status)
+                </dd>
+
+                <dt>
+                    Pay Date :
+                </dt>
+
+                <dd class="font-medium text-dark-medium">
+                    @Html.DisplayFor(model => model.Pay_Date)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.F_id,}, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green"}) 
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model Symphont_LTD.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>Are You Sure You Want To Delete This Book?</h3>
+                </div>
+            </div>
+            <div class="single-info-details">
+                <div class="item-content">
+                    <div class="info-table table-responsive">
+                        <table class="table text-nowrap">
+                            <tbody>
+                                <tr>
+                                    <td>Book ID:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.C_id)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Name:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Descripation:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course_Descripation)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Price:</td>
+                                    <td class="font-medium text-dark-medium"> @Html.DisplayFor(model => model.Course_Price)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Start Date:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course_start_Date)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course End Date:</td>
+                                    <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course_end_Date)</td>
+                                </tr>
+                                <tr>
+                                    <td>Course Image:</td>
+                                    <td class="font-medium text-dark-medium"><img src="~/coursepic/@Html.DisplayFor(model => model.Course_Image)" width="200" height="150"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.C_id }, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" }) 
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+            </p>
+        </div>
+    </div>

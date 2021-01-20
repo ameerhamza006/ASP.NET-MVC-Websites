@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Symphont_LTD.Models.FAQ>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>All Course Data</h3>
+            </div>
+        </div>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <div class="table-responsive">
+            <table class="table display data-table text-nowrap">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Questions)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Answer)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.FAQS_ID }, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+                                @Html.ActionLink("Details", "Details", new { id = item.FAQS_ID }, new { @class = "btn-fill-sm radius-4 text-light bg-yellow" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FAQS_ID }, new { @class = "btn-fill-sm radius-4 text-light bg-orange-red" })
+                            </td>
+                        </tr>
+                    }
+
+            </table>
+        </div>
+    </div>

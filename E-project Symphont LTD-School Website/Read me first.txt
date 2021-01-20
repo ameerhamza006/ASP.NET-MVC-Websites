@@ -1,0 +1,10 @@
+SQl
+Server name: .
+Authentication: SQL Server Authentication.
+Login: sa
+Password:Student@
+
+Go To Website 
+Login:admin1@gmail.com
+Password:admin123
+You are On Admin Panel.

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="B_id" />
+    </Key>
+    <Property Name="C_id" Type="int" />
+    <Property Name="B_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Book PDF" Type="varchar(max)" />
+    <Property Name="Upload date" Type="date" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Course Descripation" Type="nvarchar" MaxLength="500" />
+    <Property Name="Course Image" Type="nvarchar(max)" />
+    <Property Name="Course start Date" Type="date" />
+    <Property Name="Course end Date" Type="date" />
+    <Property Name="Course Price" Type="money" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="E_id" />
+    </Key>
+    <Property Name="ID" Type="int" />
+    <Property Name="E_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Exam Name" Type="char" MaxLength="20" />
+    <Property Name="Exam Time" Type="time" Precision="7" />
+    <Property Name="Exam Date" Type="date" />
+  </EntityType>
+  <EntityType Name="FAQS">
+    <Key>
+      <PropertyRef Name="FAQS ID" />
+    </Key>
+    <Property Name="FAQS ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Questions" Type="nvarchar" MaxLength="500" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Fee">
+    <Key>
+      <PropertyRef Name="F_id" />
+    </Key>
+    <Property Name="ID" Type="int" />
+    <Property Name="F_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="status" Type="char" MaxLength="10" />
+    <Property Name="Pay Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First Name" Type="varchar" MaxLength="30" />
+    <Property Name="Last Name" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Date of birth" Type="date" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="pichure" Type="nvarchar(max)" />
+    <Property Name="C_id" Type="int" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Books__C_id__2B3F6F97">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="C_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exam__ID__30F848ED">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Exam">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__ID__2E1BDC42">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Registrati__C_id__286302EC">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="C_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAQS" EntityType="Self.FAQS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fee" EntityType="Self.Fee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Books__C_id__2B3F6F97" Association="Self.FK__Books__C_id__2B3F6F97">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exam__ID__30F848ED" Association="Self.FK__Exam__ID__30F848ED">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="Exam" EntitySet="Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__ID__2E1BDC42" Association="Self.FK__Fee__ID__2E1BDC42">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="Fee" EntitySet="Fee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Registrati__C_id__286302EC" Association="Self.FK__Registrati__C_id__286302EC">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Registration" EntitySet="Registration" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

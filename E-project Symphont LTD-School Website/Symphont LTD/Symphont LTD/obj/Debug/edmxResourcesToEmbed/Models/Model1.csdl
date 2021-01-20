@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="B_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" />
+    <Property Name="B_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Book_PDF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Upload_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Books__C_id__2B3F6F97" FromRole="Books" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Course_Descripation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Course_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Course_start_Date" Type="DateTime" Precision="0" />
+    <Property Name="Course_end_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__Books__C_id__2B3F6F97" FromRole="Course" ToRole="Books" />
+    <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrati__C_id__286302EC" FromRole="Course" ToRole="Registration" />
+    <Property Name="Course_Price" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="E_id" />
+    </Key>
+    <Property Name="ID" Type="Int32" />
+    <Property Name="E_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exam_Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Exam_Time" Type="Time" Precision="7" />
+    <Property Name="Exam_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK__Exam__ID__30F848ED" FromRole="Exam" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="FAQ">
+    <Key>
+      <PropertyRef Name="FAQS_ID" />
+    </Key>
+    <Property Name="FAQS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Questions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Fee">
+    <Key>
+      <PropertyRef Name="F_id" />
+    </Key>
+    <Property Name="ID" Type="Int32" />
+    <Property Name="F_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Pay_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK__Fee__ID__2E1BDC42" FromRole="Fee" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Date_of_birth" Type="DateTime" Precision="0" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="pichure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_id" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Registrati__C_id__286302EC" FromRole="Registration" ToRole="Course" />
+    <NavigationProperty Name="Exams" Relationship="Self.FK__Exam__ID__30F848ED" FromRole="Registration" ToRole="Exam" />
+    <NavigationProperty Name="Fees" Relationship="Self.FK__Fee__ID__2E1BDC42" FromRole="Registration" ToRole="Fee" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Books__C_id__2B3F6F97">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Books" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="C_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Registrati__C_id__286302EC">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="C_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exam__ID__30F848ED">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Exam">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__ID__2E1BDC42">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Symphont_LTDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Exams" EntityType="Self.Exam" />
+    <EntitySet Name="FAQS" EntityType="Self.FAQ" />
+    <EntitySet Name="Fees" EntityType="Self.Fee" />
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <AssociationSet Name="FK__Books__C_id__2B3F6F97" Association="Self.FK__Books__C_id__2B3F6F97">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Registrati__C_id__286302EC" Association="Self.FK__Registrati__C_id__286302EC">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Registration" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exam__ID__30F848ED" Association="Self.FK__Exam__ID__30F848ED">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Exam" EntitySet="Exams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__ID__2E1BDC42" Association="Self.FK__Fee__ID__2E1BDC42">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Fee" EntitySet="Fees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

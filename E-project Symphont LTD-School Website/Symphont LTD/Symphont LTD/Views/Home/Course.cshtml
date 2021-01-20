@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Symphont_LTD.Models.Course>
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/Website.cshtml";
+}
+
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Our Courses</h3>
+</div>
+<div class="popular_courses ">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-100">
+                    <h3>Popular Courses</h3>
+                    <p>
+                        Your domain control panel is designed for ease-of-use and <br> allows for all aspects of your
+                        domains.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="all_courses">
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active">
+                        <div class="row">
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="single_courses">
+                                        <div class="thumb">
+                                            <a href="#">
+                                                <img src="~/coursepic/@Url.Content(item.Course_Image)" width="362" ; height="250">
+                                            </a>
+                                        </div>
+                                        <div class="courses_info">
+                                            <span style="font-size:20px;">@Html.DisplayFor(modelItem => item.Course_Name)</span>
+
+                                            <div class="star_prise d-flex justify-content-between">
+                                                <div class="star">
+                                                    <i class="flaticon-mark-as-favorite-star"></i>
+                                                    <span>@Html.DisplayFor(modelItem => item.Course_start_Date)</span>
+                                                </div>
+                                                <div class="prise">
+                                                    <span class="active_prise">$ @Html.DisplayFor(modelItem => item.Course_Price)</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                @Html.ActionLink("See Details", "Coursedetails", new { id = item.C_id })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

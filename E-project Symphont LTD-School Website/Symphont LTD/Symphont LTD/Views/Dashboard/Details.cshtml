@@ -1,0 +1,80 @@
+﻿@model Symphont_LTD.Models.Registration
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Backend.cshtml";
+}
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>About Me</h3>
+            </div>
+        </div>
+        <div class="single-info-details">
+            <div class="item-img">
+                <img src="~/picture/@Url.Content(Model.pichure)" />
+
+            </div>
+            <div class="item-content">
+                <div class="header-inline item-header">
+                    <h3 class="text-dark-medium font-medium">@Html.DisplayFor(model => model.First_Name)</h3>
+                </div>
+                <div class="info-table table-responsive">
+                    <table class="table text-nowrap">
+                        <tbody>
+                            <tr>
+                                <td>First Name:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.First_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Last_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Gender)</td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Birth:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Date_of_birth)</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Email)</td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.phone)</td>
+                            </tr>
+                            <tr>
+                                <td>ID:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.ID)</td>
+                            </tr>
+                            <tr>
+                                <td>Course Name:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Course.Course_Name)</td>
+                            </tr>
+
+                            <tr>
+                                <td>Role:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Role)</td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <td class="font-medium text-dark-medium">@Html.DisplayFor(model => model.Country)</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn-fill-sm radius-4 text-light bg-yellow" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-fill-sm radius-4 text-light bg-light-sea-green" })
+        </p>
+    </div>
+</div>

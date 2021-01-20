@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Symphont_LTDEntities">
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="Model.Book">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="C_id" ColumnName="C_id" />
+          <ScalarProperty Name="B_id" ColumnName="B_id" />
+          <ScalarProperty Name="Book_Name" ColumnName="Book Name" />
+          <ScalarProperty Name="Book_PDF" ColumnName="Book PDF" />
+          <ScalarProperty Name="Upload_date" ColumnName="Upload date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="Model.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="Course_Price" ColumnName="Course Price" />
+          <ScalarProperty Name="C_id" ColumnName="C_id" />
+          <ScalarProperty Name="Course_Name" ColumnName="Course Name" />
+          <ScalarProperty Name="Course_Descripation" ColumnName="Course Descripation" />
+          <ScalarProperty Name="Course_Image" ColumnName="Course Image" />
+          <ScalarProperty Name="Course_start_Date" ColumnName="Course start Date" />
+          <ScalarProperty Name="Course_end_Date" ColumnName="Course end Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exams">
+      <EntityTypeMapping TypeName="Model.Exam">
+        <MappingFragment StoreEntitySet="Exam">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="E_id" ColumnName="E_id" />
+          <ScalarProperty Name="Exam_Name" ColumnName="Exam Name" />
+          <ScalarProperty Name="Exam_Time" ColumnName="Exam Time" />
+          <ScalarProperty Name="Exam_Date" ColumnName="Exam Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQS">
+      <EntityTypeMapping TypeName="Model.FAQ">
+        <MappingFragment StoreEntitySet="FAQS">
+          <ScalarProperty Name="FAQS_ID" ColumnName="FAQS ID" />
+          <ScalarProperty Name="Questions" ColumnName="Questions" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fees">
+      <EntityTypeMapping TypeName="Model.Fee">
+        <MappingFragment StoreEntitySet="Fee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="F_id" ColumnName="F_id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Pay_Date" ColumnName="Pay Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrations">
+      <EntityTypeMapping TypeName="Model.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Date_of_birth" ColumnName="Date of birth" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="pichure" ColumnName="pichure" />
+          <ScalarProperty Name="C_id" ColumnName="C_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
